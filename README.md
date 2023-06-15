@@ -41,7 +41,7 @@ pip install .
 
 ## Examples of API Calls
 
-We demonstrate efficient way of making API calls using this package. Large Language Models such as `openai.completion` and `palm.generate_text` are at the tip of your finger.
+We demonstrate efficient way of making API calls using this package. Large Language Models such as `openai.completion` and `palm.generate_text` are at the tip of your finger. For OpenAI's GPT related models, you will need to acquire your own API Key, which you can go to their official [site](https://platform.openai.com/) to create your own key. It is the same with Google's Palm. You can go to their [site](https://developers.generativeai.google/tutorials/setup) to apply for API Key. You will need both keys for the following code. 
 
 ```py
 from src.explain.similarity import *
