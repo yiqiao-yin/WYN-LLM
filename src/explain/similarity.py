@@ -2,6 +2,7 @@ import numpy as np
 from scipy.spatial.distance import cosine
 from sentence_transformers import SentenceTransformer
 import openai
+import google.generativeai as palm
 
 def calculate_cosine_similarity(sentence1: str, sentence2: str) -> float:
     """
@@ -90,10 +91,33 @@ def openai_text_embedding(prompt: str, key: str) -> str:
     )["data"][0]["embedding"]
 
 
-def calculate_sts_openai_score(sentence1: str, sentence2: str) -> float:
+def calculate_sts_openai_score(sentence1: str, sentence2: str, key: str) -> float:
     # Compute sentence embeddings
-    embedding1 = openai_text_embedding(sentence1) # Flatten the embedding array
-    embedding2 = openai_text_embedding(sentence2)  # Flatten the embedding array
+    embedding1 = openai_text_embedding(sentence1, key) # Flatten the embedding array
+    embedding2 = openai_text_embedding(sentence2, key)  # Flatten the embedding array
+
+    # Convert to array
+    embedding1 = np.asarray(embedding1)
+    embedding2 = np.asarray(embedding2)
+
+    # Calculate cosine similarity between the embeddings
+    similarity_score = 1 - cosine(embedding1, embedding2)
+
+    return similarity_score
+
+
+def palm_text_embedding(prompt: str, key: str) -> str:
+    # API Key
+    palm.configure(api_key=key)
+    model = "models/embedding-gecko-001"
+
+    return palm.generate_embeddings(model=model, text=prompt)['embedding']
+
+
+def calculate_sts_palm_score(sentence1: str, sentence2: str, key: str) -> float:
+    # Compute sentence embeddings
+    embedding1 = palm_text_embedding(sentence1, key) # Flatten the embedding array
+    embedding2 = palm_text_embedding(sentence2, key)  # Flatten the embedding array
 
     # Convert to array
     embedding1 = np.asarray(embedding1)

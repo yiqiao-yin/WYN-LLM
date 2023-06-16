@@ -47,8 +47,12 @@ We demonstrate efficient way of making API calls using this package. Large Langu
 from src.explain.similarity import *
 str1 = "hello world"
 str2 = "hi world"
-calculate_cosine_similarity(str1, str2)
+print(wyn_explain_sim.calculate_cosine_similarity(str1, str2))
+print(wyn_explain_sim.calculate_sts_score(str1, str2))
+print(wyn_explain_sim.calculate_sts_openai_score(str1, str2, YOUR_OPENAI_API_KEY))
 # 0.5
+# 0.8213709592819214
+# 0.9113127745099068
 ```
 
 ```py
