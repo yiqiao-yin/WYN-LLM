@@ -61,7 +61,7 @@ ans
 ```py
 from src.models.googl import call_palm
 call_palm("tell me a joke", key)
-original_answer = call_chatgpt("who is yiqiao", key)
-original_answer
+ans = call_palm("who is yiqiao", key)
+ans
 # Why did the scarecrow win an award?\n\nBecause he was outstanding in his field!
 ```
