@@ -1,4 +1,4 @@
-# Week 1 resources
+# Session 1 resources
 
 Below you'll find links to the research papers discussed in this week's videos. You don't need to understand all the technical details discussed in these papers - you have already seen the most important points you'll need to answer the quizzes in the lecture videos.
 
